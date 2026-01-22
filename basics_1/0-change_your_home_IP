@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
-# Backup the original /etc/hosts file
-cp /etc/hosts /etc/hosts.backup
+# Updates /etc/hosts to change localhost and facebook.com IP addresses
 
-# Remove any existing entries for localhost and facebook.com
-sed -i '/localhost/d' /etc/hosts
+sed -i 's/^127\.0\.0\.1[[:space:]]\+localhost/127.0.0.2 localhost/' /etc/hosts
 sed -i '/facebook.com/d' /etc/hosts
-
-# Add new entries
-echo "127.0.0.2 localhost" >> /etc/hosts
-echo "8.8.8.8 faceb
+echo "8.8.8.8 facebook.com" >> /etc/hosts
